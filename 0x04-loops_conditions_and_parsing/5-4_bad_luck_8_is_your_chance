@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#Prints Best school ten times with the 8th number as Good Luck and the fourth number as Bad luck
 i=1
 while [ $i -le 10 ]
 do
