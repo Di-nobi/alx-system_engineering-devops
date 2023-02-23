@@ -3,7 +3,7 @@
 #prints best school 10 times, but at 9th print hi
 
 count=1
-while [ $count -lt 10 ]
+while [ $count -le 10 ]
 do
 	echo "Best School"
 	if [ $count -eq 9 ]
