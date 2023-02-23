@@ -7,7 +7,7 @@ do
 	then
 		echo "bad luck"
 
-	elif [$i == 8 ]
+	elif [ $i == 8 ]
 	then
 		echo "good luck"
 	else
