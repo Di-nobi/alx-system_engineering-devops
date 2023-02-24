@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# A bash script that displays infinite and beyond with sleep 2
+while true
+do
+	echo "infinity and beyond"
+	sleep 2
+	trap 'echo "I am invincible!!!"' SIGTERM
+done
