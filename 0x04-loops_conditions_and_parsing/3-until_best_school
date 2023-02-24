@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # prints with until loop
 
-i=1
-until [ $i -lt 10 ]
+i=10
+until [ "$i" -lt 1 ]
 do
 	echo "Best School"
-	((i++))
+	i=$(( i-1 ))
 done
