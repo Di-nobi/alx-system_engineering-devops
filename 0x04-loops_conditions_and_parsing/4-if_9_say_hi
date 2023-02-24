@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-#prints best school 10 times, but at 9th print hi
-
+#Prints best school with while loop having hi as the ninth number
 count=1
 while [ $count -le 10 ]
 do
