@@ -10,4 +10,10 @@ sudo apt-get install -y nginx
 mkdir -p /var/www/html
 touch /var/www/html/index.html
 echo "Hello World!" > /var/www/html/index.html
-
+touch /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+site1="\n\tlocation /redirect_me {\n\treturn 301 http://www.nobmart.com;\n\t}\n"
+site2="\n\tadd_header X-Served-By \$hostname;"
+site3="\n\terror_page 404 /404.html;\nlocation /404 {\nroot /var/www/html;\ninternal;\n}"
+sed -i "47i\ $site2$site1$site3" /etc/nginx/sites-available/default
+sudo service nginx restart
