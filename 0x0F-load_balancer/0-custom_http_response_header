@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Install Nginx:
+#+	Listening to port 80
+#+	at the root with a curl GET request
+
+sudo apt-get update
+sudo apt-get install -y nginx
+
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+
