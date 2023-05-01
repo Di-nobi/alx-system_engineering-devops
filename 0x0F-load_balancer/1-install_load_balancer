@@ -15,7 +15,7 @@ frontend http
 
 backend web-backend
    balance roundrobin
-   server 181266-web-01 34.239.255.136:80 check
+   server 181266-web-01 34.203.29.12:80 check
    server 181266-web-02 34.227.90.80:80 check
 "
 echo "$load_balance" >> /etc/haproxy/haproxy.cfg
