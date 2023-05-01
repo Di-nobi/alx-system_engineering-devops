@@ -8,10 +8,27 @@ sudo apt-get update
 sudo apt-get install -y nginx
 ufw allow 'Nginx HTTP'
 mkdir -p /var/www/html
+sudo chmod -R 755 /var/www
 sudo touch /var/www/html/index.html
 sudo echo "Hello World!" > /var/www/html/index.html
 sudo touch /var/www/html/404.html
 sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect me https://www.youtube.com/watch?v=uFLRIFRCTfo permanent;' /etc/nginx/sites-available/default
-sed -i 'listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+load_balancer=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm;
+	add_header X-Served-By $HOSTNAME;
+
+	location /redirect_me {
+	    return 301 http://nobmart.com/;
+    }
+	error_page 404 /404.html;
+	location =  /404.html {
+	        internal;
+	}
+}"
+
+echo "$load_balancer" > /etc/nginx/sites-enabled/default
 sudo service nginx restart

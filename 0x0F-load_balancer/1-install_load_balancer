@@ -1,15 +1,13 @@
-<<<<<<< HEAD
-
-=======
 #!/usr/bin/env bash
 
 # Installing and Configuring HAproxy
 sudo apt-get -y update
 sudo apt-get -y upgrade
-
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
 sudo apt-get -y install haproxy
-sudo chown -R ubuntu /etc/haproxy
-sudo echo "
+sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+load_balance="\
 frontend http
   bind *:80
   mode http
@@ -17,7 +15,8 @@ frontend http
 
 backend web-backend
    balance roundrobin
-   server 181266-web-01 54.90.21.205:80 check
-   server 181266-web-02 34.227.90.80:80 check" >> /etc/haproxy/haproxy.cfg
+   server 181266-web-01 34.239.255.136:80 check
+   server 181266-web-02 34.227.90.80:80 check
+"
+echo "$load_balance" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
->>>>>>> db7c5833e51ce6dbfdcfa9671a7825cf4427b59b
