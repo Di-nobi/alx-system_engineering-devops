@@ -8,15 +8,15 @@ sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
 sudo apt-get -y install haproxy
 sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
 load_balance="\
-frontend http
+frontend haproxy_balancer
   bind *:80
   mode http
-  default_backend web-backend
+  default_backend webservers
 
-backend web-backend
+backend webservers
    balance roundrobin
    server 181266-web-01 34.203.29.12:80 check
    server 181266-web-02 34.227.90.80:80 check
 "
 echo "$load_balance" >> /etc/haproxy/haproxy.cfg
-sudo service haproxy restart
+service haproxy restart

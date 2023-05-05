@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-
-# Install Nginx:
-#+	Listening to port 80
-#+	at the root with a curl GET request
+# Install Nginx Listening to port 80at 
+#the root with a curl GET request
 
 sudo apt-get update
 sudo apt-get install -y nginx
