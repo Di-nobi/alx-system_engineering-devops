@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Debugging Nginx failing listening to port 80
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
+sudo apt-get install ufw
+ufw allow 'Nginx HTTP'
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx start
