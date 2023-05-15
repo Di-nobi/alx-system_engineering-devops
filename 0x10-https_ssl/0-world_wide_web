@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-Shows information about ssubdomains
+# Shows information about ssubdomains
 
 domain ()  {
-	info = $(dig "$2"."$1" | grep -A1 "ANSWER SECTION:' | tail -1)
-	echo "$2 $info" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}
+    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2{ print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
 if [ "$# -eq 1 ]
