@@ -5,8 +5,8 @@ import sys
 if __name__ == "__main__":
 
     url = 'https://jsonplaceholder.typicode.com/users/' + sys.argv[1]
-    req = requests.get(url)
-    name = req.json().get("name")
+    req = requests.get(url).json()
+    name = req.get("name")
 
     url_2 = 'https://jsonplaceholder.typicode.com/todos'
     req2 = requests.get(url_2)
@@ -24,5 +24,5 @@ if __name__ == "__main__":
                                                           completed_tasks,
                                                           task_num))
 
-    for i in filed_tasks:
+    for i in filed_task:
         print("\t {}".format(i))
