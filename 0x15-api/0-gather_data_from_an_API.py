@@ -20,7 +20,9 @@ if __name__ == "__main__":
         if task.get("completed_tasks") is True:
             completed_tasks += 1
             filed_task.append(task.get("title"))
-    print("Employee {} is done with tasks({}/{}):".format(name, completed_tasks, task_num))
+    print("Employee {} is done with tasks({}/{}):".format(name, 
+                                                         completed_tasks, 
+                                                         task_num))
 
     for i in filed_tasks:
         print("\t {}".format(i))
