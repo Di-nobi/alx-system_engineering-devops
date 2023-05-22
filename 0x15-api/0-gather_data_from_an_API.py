@@ -5,7 +5,7 @@ import sys
 if __name__ == "__main__":
 
     url = 'https://jsonplaceholder.typicode.com/users/' + sys.argv[1]
-    req = requests.get(url).json
+    req = requests.get(url).json()
     name = req.get("name")
 
     url_2 = 'https://jsonplaceholder.typicode.com/todos'
