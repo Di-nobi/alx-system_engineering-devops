@@ -17,9 +17,9 @@ if __name__ == "__main__":
     for task in req2.json():
         if task.get('userId') == int(sys.argv[1]):
             task_num += 1
-        if task.get("completed_tasks") is True:
-            completed_tasks += 1
-            filed_task.append(task.get("title"))
+            if task.get("completed_tasks") is True:
+                completed_tasks += 1
+                filed_task.append(task.get("title"))
     print("Employee {} is done with tasks({}/{}):".format(name,
                                                           completed_tasks,
                                                           task_num))
