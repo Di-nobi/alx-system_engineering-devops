@@ -16,7 +16,8 @@ if __name__ == "__main__":
     line = []
     for i in req2.json():
         if i.get("userId") == int(sys.argv[1]):
-            line.append([i.get("userId"), userName, i.get("completed"), i.get("title")])
+            line.append([i.get("userId"), 
+                        userName, i.get("completed"), i.get("title")])
 
     with open(files, 'w') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
